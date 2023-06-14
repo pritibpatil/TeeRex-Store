@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { add_cart_item } from '../Redux/CartConstant'
 
@@ -17,9 +16,9 @@ export default function SingleProductCard({item}) {
             <p>Rs {item.price}</p>
             <button onClick={()=>{
                // checking for duplicate item in the cart
-                let itemIndex=cartData.findIndex((e)=>e.id==item.id)
+                let itemIndex=cartData.findIndex((e)=>e.id===item.id)
                 console.log(itemIndex)
-                if(itemIndex!=-1){
+                if(itemIndex!==-1){
                   alert("Item is already in the cart !!")
                   return 
                 }
