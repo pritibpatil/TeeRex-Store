@@ -20,7 +20,7 @@ export default function ProductList() {
 
     }
     else {
-      setSelectedCategory([...selectedCategory.filter((e) => e != value)])
+      setSelectedCategory([...selectedCategory.filter((e) => e !== value)])
     }
   }
 
@@ -31,16 +31,12 @@ export default function ProductList() {
 
   }
   const searchOnKeyPress = (e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       dispatch(product_search(searchInput.split(" ")))
     }
   }
 
   useEffect(() => {
-    //  if(selectedCategory.length==0){
-    //     dispatch(get_product_request())
-    //     return 
-    //  }
     dispatch(product_filter(selectedCategory))
   }, [selectedCategory])
 
@@ -64,7 +60,7 @@ export default function ProductList() {
       <div className="searchDiv">
         <input type="text" placeholder='Search for products...' onChange={(e) => {
           setSearchInput(e.target.value)
-        }} onKeyPress={searchOnKeyPress} />
+        }}   />
         <div className="searchIconDiv" onClick={searchDataHandler}>
           <i class="fa fa-search" aria-hidden="true"></i>
         </div>
@@ -125,12 +121,12 @@ export default function ProductList() {
         </div>
         <div className='product_list_div'>
           {
-             loading ? <img className='loaderImg' src='https://i.pinimg.com/originals/15/f2/09/15f209bdae6da376665c3a1b2cb781ea.gif' /> : error ? <img className='loaderImg' src='https://cdn.dribbble.com/users/2573223/screenshots/7038977/media/4bf93fe9739caa636cd3d09f79d453b6.gif' /> :
-             mappingData.map((item) => {
-              return (
-                <SingleProductCard item={item} key={item.id} />
-              )
-            })
+            loading ? <img className='loaderImg' src='https://i.pinimg.com/originals/15/f2/09/15f209bdae6da376665c3a1b2cb781ea.gif' /> : error ? <img className='loaderImg' src='https://cdn.dribbble.com/users/2573223/screenshots/7038977/media/4bf93fe9739caa636cd3d09f79d453b6.gif' /> :
+              mappingData.map((item) => {
+                return (
+                  <SingleProductCard item={item} key={item.id} />
+                )
+              })
           }
         </div>
       </div>

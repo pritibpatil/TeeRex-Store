@@ -50,15 +50,15 @@ const filterHandler=(data ,selectedValues)=>{
 const searchDataHandler=(data,inputValues)=>{
 
       let search_result= data.filter((e)=>{
-                if((e.color==inputValues[0] && e.type==inputValues[1])){
+                if((e.color===inputValues[0] && e.type===inputValues[1])){
                     return e
                 }
-            //   if( e.color==inputValues[0] ){
-            //           return e
-            //     }
-            //      if( e.type==inputValues[0]){
-            //         return e
-            //   }
+               // if( e.color===inputValues[0] ){
+               //          return e
+               //    }
+               //    if( e.type===inputValues[1]){
+               //       return e
+               // }
       });
       console.log("searced data" , search_result)
       return search_result.length?search_result:data

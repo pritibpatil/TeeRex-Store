@@ -28,7 +28,7 @@ export const CartReducer = (store = initialState, { type, payload }) => {
 };
 
 const deleteItem = (cart, id) => {
-  let rest_cart_data = cart.cartData.filter((e) => e.id != id);
+  let rest_cart_data = cart.cartData.filter((e) => e.id !== id);
   console.log("cart after deleting data", cart.cartData);
   return rest_cart_data;
 };
@@ -46,12 +46,12 @@ const addToCart = (cart, item) => {
 
 const incrementQuantity=(cart,id)=>{
 
-  return cart.filter((e)=>e.id==id?e.currentQuantity++:e)
+  return cart.filter((e)=>e.id===id?e.currentQuantity++:e)
    
 }
 const decrementQuantity=(cart,id)=>{
 
-  return cart.filter((e)=>e.id==id && e.currentQuantity>1?e.currentQuantity--:e)
+  return cart.filter((e)=>e.id===id && e.currentQuantity>1?e.currentQuantity--:e)
    
 }
 

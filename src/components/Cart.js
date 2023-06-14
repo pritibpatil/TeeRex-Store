@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
 import "../Styles/styles.css"
 import {useDispatch, useSelector} from "react-redux"
-import { decrease_item_quantity, delete_cart_item, get_total_item_price, increase_item_quantity } from '../Redux/CartConstant';
+import { decrease_item_quantity, delete_cart_item, increase_item_quantity } from '../Redux/CartConstant';
 import {useNavigate} from "react-router-dom"
+
 export default function Cart() {
   const {cartData }= useSelector((store)=>store.CartReducer);
   const navigate=useNavigate()
@@ -44,7 +44,7 @@ export default function Cart() {
                   <button onClick={()=>{
                     // checking quantity limit 
                      let itemIndex= cartData.findIndex((e)=>e.currentQuantity>e.quantity);
-                     if(itemIndex!=-1){
+                     if(itemIndex!==-1){
                      alert("Item quantity limit is exceeded ")
                       return 
                      }
@@ -70,7 +70,7 @@ export default function Cart() {
           
         </div>
 
-        <h4 style={{fontSize:"20px",marginLeft:"13%" , marginTop:"10px"}}>Total payable amount : {totalPrice==0?"":totalPrice}</h4>
+        <h4 style={{fontSize:"20px",marginLeft:"13%" , marginTop:"10px"}}>Total payable amount : {totalPrice===0?"":totalPrice}</h4>
     </div>
 
      
